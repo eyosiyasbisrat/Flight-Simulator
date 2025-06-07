@@ -1,0 +1,55 @@
+# Flight Simulator
+
+A 3D flight simulator built with Three.js that provides a basic aircraft flying experience with terrain, skybox, and motion controls.
+
+## Features
+
+- 3D aircraft model with realistic flight controls
+- Dynamic terrain with height mapping
+- Skybox for immersive environment
+- Realistic lighting and shadows
+- Interactive controls for pitch, roll, and yaw
+- Throttle control for speed management
+
+## Controls
+
+- W/S - Pitch down/up
+- A/D - Roll left/right
+- Q/E - Yaw left/right
+- Space - Increase throttle
+- Shift - Decrease throttle
+
+## Setup
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start the development server:
+```bash
+npm start
+```
+
+3. Open your browser and navigate to `http://localhost:5173`
+
+## Technologies Used
+
+- Three.js for 3D rendering
+- Vite for development and building
+- JavaScript ES6+
+
+## Project Structure
+
+```
+flight-simulator/
+├── src/
+│   ├── main.js         # Main application code
+│   ├── aircraft.js     # Aircraft model and physics
+│   ├── terrain.js      # Terrain generation
+│   └── skybox.js       # Procedural skybox
+├── index.html          # Main HTML file
+├── style.css           # Styles
+├── package.json        # Project dependencies
+└── README.md          # Project documentation
+```
