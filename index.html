@@ -12,14 +12,30 @@
         <div id="controls">
             <p>Controls:</p>
             <ul>
-                <li>W/S - Pitch down/up</li>
+                <li>W - Pitch Up</li>
+                <li>S - Pitch Down</li>
                 <li>A/D - Roll left/right</li>
                 <li>Q/E - Yaw left/right</li>
                 <li>Space - Increase throttle</li>
                 <li>Shift - Decrease throttle</li>
             </ul>
         </div>
+        <div id="score-display">Score: 0</div>
+        
+        <div id="high-scores">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list"></ul>
+        </div>
     </div>
+
+    <div id="game-over-overlay">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-button">Restart Game</button>
+        </div>
+    </div>
+
     <div id="scene-container"></div>
     <script type="module" src="/src/main.js"></script>
 </body>

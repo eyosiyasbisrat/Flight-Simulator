@@ -33,6 +33,7 @@ body {
 
 #controls {
     font-size: 14px;
+    margin-bottom: 20px;
 }
 
 #controls ul {
@@ -42,4 +43,56 @@ body {
 
 #controls li {
     margin: 5px 0;
+}
+
+#score-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#game-over-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.game-over-content {
+    background-color: #333;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.game-over-content h2 {
+    margin-top: 0;
+    font-size: 36px;
+}
+
+.game-over-content p {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+#restart-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+    background-color: #0056b3;
 } 
