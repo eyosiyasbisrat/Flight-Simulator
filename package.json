@@ -1,0 +1,17 @@
+{
+  "name": "flight-simulator",
+  "version": "1.0.0",
+  "description": "A 3D flight simulator using Three.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.162.0"
+  },
+  "devDependencies": {
+    "vite": "^5.1.4"
+  }
+} 
