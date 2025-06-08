@@ -30,6 +30,10 @@ npm install
 ```bash
 npm start
 ```
+**Troubleshooting `npm start`:** If `npm start` does not provide a URL or seems to exit silently, try running the development server directly with verbose output and automatic browser opening:
+```bash
+npx vite --force --open
+```
 
 3. Open your browser and navigate to `http://localhost:5173`
 
