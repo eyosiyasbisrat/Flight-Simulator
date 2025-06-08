@@ -43,7 +43,12 @@ class FlightSimulator {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.shadowMap.enabled = true;
+        this.renderer.setClearColor(0x87CEEB); // Sky blue background
         document.getElementById('scene-container').appendChild(this.renderer.domElement);
+
+        // Log canvas dimensions
+        const canvas = this.renderer.domElement;
+        console.log(`Canvas dimensions: ${canvas.width}x${canvas.height}`);
 
         // Setup camera
         this.camera.position.set(0, 50, 50); // Initial camera behind aircraft, adjusted for dodging, higher Y
@@ -108,6 +113,13 @@ class FlightSimulator {
         // Add bounding box helper for aircraft for debugging
         const aircraftBoxHelper = new THREE.BoxHelper(this.aircraft.mesh, 0xffff00);
         this.scene.add(aircraftBoxHelper);
+
+        // Add a test cube
+        const geometry = new THREE.BoxGeometry(10, 10, 10);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(0, 50, -100); // Position it in front of the camera
+        this.scene.add(cube);
         
         // Log initial position and terrain height for debugging
         const initialHeight = this.terrain.getHeightAt(this.aircraft.mesh.position.x, this.aircraft.mesh.position.z);
@@ -115,6 +127,9 @@ class FlightSimulator {
 
         // Create obstacle manager
         this.obstacleManager = new ObstacleManager(this.scene);
+
+        // Log scene children count
+        console.log(`Scene has ${this.scene.children.length} objects after environment creation.`);
     }
 
     setupEventListeners() {
@@ -306,6 +321,7 @@ class FlightSimulator {
         this.updateCamera();
         
         this.renderer.render(this.scene, this.camera);
+        console.log("Rendering frame...");
     }
 }
 
