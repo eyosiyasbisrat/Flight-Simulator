@@ -29,9 +29,9 @@ export class Terrain {
             let height = 0;
             // Make terrain less aggressive near the center
             const distFromCenter = Math.sqrt(x*x + z*z);
-            const falloff = Math.max(0, (500 - distFromCenter) / 500); // Reduce height near center
+            const falloff = Math.max(0, (500 - distFromCenter) / 500);
             
-            height += this.noise2D(x * 0.001, z * 0.001) * 40 * falloff; // Increased height variation for mountains
+            height += this.noise2D(x * 0.001, z * 0.001) * 40 * falloff;
             height += this.noise2D(x * 0.002, z * 0.002) * 20 * falloff;
             height += this.noise2D(x * 0.004, z * 0.004) * 10 * falloff;
             
@@ -42,17 +42,17 @@ export class Terrain {
 
         // Create materials for different terrain types
         const materials = [
-            new THREE.MeshStandardMaterial({ // Grass
+            new THREE.MeshStandardMaterial({
                 color: 0x3a7e4f,
                 roughness: 0.8,
                 metalness: 0.2
             }),
-            new THREE.MeshStandardMaterial({ // Rock
+            new THREE.MeshStandardMaterial({
                 color: 0x808080,
                 roughness: 0.9,
                 metalness: 0.1
             }),
-            new THREE.MeshStandardMaterial({ // Snow
+            new THREE.MeshStandardMaterial({
                 color: 0xffffff,
                 roughness: 0.7,
                 metalness: 0.1
@@ -69,8 +69,8 @@ export class Terrain {
     }
 
     addTerrainDetails() {
-        const treeCount = 2000; // Even more trees for denser view
-        const rockCount = 1000; // Even more rocks for denser view
+        const treeCount = 2000;
+        const rockCount = 1000;
 
         // Add trees for visual background
         for (let i = 0; i < treeCount; i++) {
@@ -78,11 +78,11 @@ export class Terrain {
             const z = (Math.random() - 0.5) * this.size;
 
             // Ensure trees are not too close to the player's immediate path, but allow closer side view
-            if (Math.abs(x) < 50 && Math.abs(z) < 100) continue; // Reduced exclusion zone
+            if (Math.abs(x) < 50 && Math.abs(z) < 100) continue;
 
             const height = this.getHeightAt(x, z);
             
-            if (height > 5 && height < 120) { // Wider height range for placement
+            if (height > 5 && height < 120) {
                 const tree = this.createTree();
                 tree.position.set(x, height, z);
                 this.mesh.add(tree);
@@ -95,11 +95,11 @@ export class Terrain {
             const z = (Math.random() - 0.5) * this.size;
             
             // Ensure rocks are not too close to the player's immediate path, but allow closer side view
-            if (Math.abs(x) < 50 && Math.abs(z) < 100) continue; // Reduced exclusion zone
+            if (Math.abs(x) < 50 && Math.abs(z) < 100) continue;
 
             const height = this.getHeightAt(x, z);
             
-            if (height > 0 && height < 100) { // Wider height range for placement
+            if (height > 0 && height < 100) {
                 const rock = this.createRock();
                 rock.position.set(x, height, z);
                 this.mesh.add(rock);
@@ -111,8 +111,8 @@ export class Terrain {
         const tree = new THREE.Group();
 
         // Tree trunk (randomized height and radius)
-        const trunkHeight = Math.random() * 10 + 10; // 10 to 20 (bigger)
-        const trunkRadius = Math.random() * 1 + 1; // 1 to 2 (bigger)
+        const trunkHeight = Math.random() * 10 + 10;
+        const trunkRadius = Math.random() * 1 + 1;
         const trunkGeometry = new THREE.CylinderGeometry(trunkRadius * 0.8, trunkRadius, trunkHeight, 8);
         const trunkMaterial = new THREE.MeshStandardMaterial({
             color: 0x4d2926,
@@ -124,8 +124,8 @@ export class Terrain {
         tree.add(trunk);
 
         // Tree top (randomized size and shape)
-        const topRadius = Math.random() * 5 + 5; // 5 to 10 (bigger)
-        const topHeight = Math.random() * 5 + 8; // 8 to 13 (bigger)
+        const topRadius = Math.random() * 5 + 5;
+        const topHeight = Math.random() * 5 + 8;
         let topGeometry;
         const shapeChoice = Math.random();
         if (shapeChoice < 0.33) {
@@ -150,7 +150,7 @@ export class Terrain {
 
     createRock() {
         let geometry;
-        const size = Math.random() * 8 + 5; // 5 to 13 (bigger rocks)
+        const size = Math.random() * 8 + 5;
         const shapeChoice = Math.random();
         if (shapeChoice < 0.33) {
             geometry = new THREE.DodecahedronGeometry(size);
@@ -179,7 +179,7 @@ export class Terrain {
         const distFromCenter = Math.sqrt(x*x + z*z);
         const falloff = Math.max(0, (500 - distFromCenter) / 500);
 
-        height += this.noise2D(x * 0.001, z * 0.001) * 40 * falloff; // Increased height variation for mountains
+        height += this.noise2D(x * 0.001, z * 0.001) * 40 * falloff;
         height += this.noise2D(x * 0.002, z * 0.002) * 20 * falloff;
         height += this.noise2D(x * 0.004, z * 0.004) * 10 * falloff;
         
