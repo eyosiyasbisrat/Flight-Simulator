@@ -67,3 +67,4 @@ flight-simulator/
 ├── package.json        # Project dependencies
 └── README.md          # Project documentation
 ```
+npx vite --force --open
